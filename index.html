@@ -1,89 +1,61 @@
 <!DOCTYPE html>
-<html lang="id">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Newbie Cyber Security</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-
-<body class="bg-gray-900 text-white">
-  <!-- Navbar -->
-  <header class="bg-gray-800 sticky top-0 z-50 shadow">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-      <h1 class="text-xl font-bold">Newbie Cyber Security</h1>
-      <nav class="space-x-4 hidden md:block">
-        <a href="#home" class="hover:text-teal-400">Home</a>
+<body class="bg-gray-900 text-white font-sans">
+  <header class="bg-gray-800 shadow-lg p-4 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <h1 class="text-2xl font-bold">Newbie Cyber Security</h1>
+      <nav class="space-x-4">
         <a href="#about" class="hover:text-teal-400">Tentang</a>
-        <a href="#komunitas" class="hover:text-teal-400">Komunitas</a>
-        <a href="#kontak" class="hover:text-teal-400">Kontak</a>
+        <a href="#cta" class="hover:text-teal-400">Gabung</a>
+        <a href="#contact" class="hover:text-teal-400">Kontak</a>
+        <a href="#social" class="hover:text-teal-400">Sosial Media</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="min-h-screen flex items-center justify-center text-center px-4">
-    <div>
-      <h2 class="text-4xl md:text-6xl font-bold mb-4">Selamat Datang di</h2>
-      <h3 class="text-teal-400 text-3xl md:text-5xl font-semibold mb-6">Newbie Cyber Security</h3>
-      <p class="text-lg max-w-xl mx-auto">Komunitas belajar dan berbagi seputar keamanan siber untuk pemula.</p>
-      <a href="#komunitas" class="mt-6 inline-block bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded-full transition">Gabung Sekarang</a>
-    </div>
-  </section>
+  <main class="px-4 py-8 max-w-4xl mx-auto">
+    <section id="about" class="mb-12">
+      <h2 class="text-3xl font-semibold mb-4">Tentang Komunitas</h2>
+      <p class="text-gray-300">Newbie Cyber Security (NCS) adalah komunitas terbuka bagi para pemula yang ingin belajar dan berbagi seputar keamanan siber. Bergabunglah dan kembangkan kemampuanmu bersama kami!</p>
+    </section>
 
-  <!-- Tentang -->
-  <section id="about" class="py-16 bg-gray-800 px-4">
-    <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-6">Tentang Kami</h2>
-      <p class="text-gray-300">Newbie Cyber Security adalah komunitas yang didedikasikan untuk siapa saja yang ingin memulai perjalanan di dunia keamanan siber. Kami menyediakan sumber belajar, diskusi, dan bimbingan.</p>
-    </div>
-  </section>
+    <section id="cta" class="mb-12 text-center">
+      <h2 class="text-3xl font-semibold mb-4">Gabung Sekarang!</h2>
+      <p class="text-gray-300 mb-6">Ingin menjadi bagian dari komunitas kami? Klik tombol di bawah ini untuk bergabung dan mulai belajar bersama!</p>
+      <a href="https://wa.me/6283846681933" target="_blank" class="bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-full shadow-lg transition duration-300">Gabung via WhatsApp</a>
+    </section>
 
-  <!-- Komunitas -->
-  <section id="komunitas" class="py-16 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-8">Apa yang Kami Tawarkan?</h2>
-      <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-        <div class="bg-gray-800 p-6 rounded-2xl shadow hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-2">Tutorial & Artikel</h3>
-          <p class="text-gray-300">Konten edukatif yang mudah dipahami untuk pemula hingga menengah.</p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-2xl shadow hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-2">Forum Diskusi</h3>
-          <p class="text-gray-300">Tempat bertanya dan berdiskusi dengan sesama member.</p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded-2xl shadow hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-2">Event & Workshop</h3>
-          <p class="text-gray-300">Ikuti kegiatan belajar bersama, webinar, dan kompetisi CTF.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <section id="social" class="mb-12">
+      <h2 class="text-3xl font-semibold mb-4">Sosial Media & Link Komunitas</h2>
+      <ul class="space-y-2 text-teal-400">
+        <li><a href="https://www.tiktok.com/@offcncs" target="_blank"><i class="fab fa-tiktok"></i> TikTok: @offcncs</a></li>
+        <li><a href="https://www.tiktok.com/@offcncs01" target="_blank"><i class="fab fa-tiktok"></i> TikTok: @offcncs01</a></li>
+        <li><a href="https://www.tiktok.com/@st0ry053" target="_blank"><i class="fab fa-tiktok"></i> TikTok: @st0ry053</a></li>
+        <li><a href="https://www.instagram.com/offcncs" target="_blank"><i class="fab fa-instagram"></i> Instagram: @offcncs</a></li>
+        <li><a href="https://facebook.com/groups/632077237669216/" target="_blank"><i class="fab fa-facebook"></i> Facebook Group</a></li>
+        <li><a href="https://github.com/RamaFounderNCS" target="_blank"><i class="fab fa-github"></i> GitHub: RamaFounderNCS</a></li>
+        <li><a href="https://offcncs.blogspot.com/" target="_blank"><i class="fas fa-blog"></i> Blogspot</a></li>
+        <li><a href="https://zone-xsec.com/archive/team/NEWBIE+CYBER+SECURITY" target="_blank"><i class="fas fa-archive"></i> Zone-Xsec Archive</a></li>
+        <li><a href="https://haxor.id/archive/team/NEWBIE+CYBER+SECURITY" target="_blank"><i class="fas fa-archive"></i> Haxor.id Archive</a></li>
+      </ul>
+    </section>
 
-  <!-- Kontak -->
-  <section id="kontak" class="py-16 bg-gray-800 px-4">
-    <div class="max-w-xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-6">Hubungi Kami</h2>
-      <p class="mb-4 text-gray-300">Punya pertanyaan atau ingin berkolaborasi? Kirim email ke:</p>
-      <a href="mailto:info@newbiecyber.id" class="text-teal-400 font-semibold">info@newbiecyber.id</a>
-    </div>
-  </section>
+    <section id="contact">
+      <h2 class="text-3xl font-semibold mb-4">Kontak</h2>
+      <p><i class="fas fa-envelope"></i> Email: <a href="mailto:offcncs@gmail.com" class="text-teal-400">offcncs@gmail.com</a></p>
+      <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/6283846681933" class="text-teal-400" target="_blank">+62 838-4668-1933</a></p>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-center py-6 text-gray-400 text-sm">
-    &copy; 2025 Newbie Cyber Security. All rights reserved.
+  <footer class="bg-gray-800 text-center p-4 mt-12">
+    <p class="text-gray-500">&copy; 2025 Newbie Cyber Security. All rights reserved.</p>
   </footer>
 </body>
-
 </html>
