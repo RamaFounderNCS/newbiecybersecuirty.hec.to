@@ -1,520 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>NEWBIE CYBER SECURITY</title>
-<style>
-  /* Reset & base */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  html, body {
-    height: 100%;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #0d1117;
-    color: #c9d1d9;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    position: relative;
-  }
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    max-width: 100vw;
-    overscroll-behavior: contain;
-  }
-
-  /* Matrix background canvas behind everything */
-  #matrix-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    pointer-events: none;
-    width: 100vw;
-    height: 100vh;
-    background: #0d1117;
-  }
-
-  /* Container for content */
-  .container {
-    z-index: 10;
-    position: relative;
-    flex: 1 0 auto;
-    max-width: 900px;
-    width: 90%;
-    margin: 0 auto;
-    padding: 1.5rem 1rem;
-  }
-
-  /* Header */
-  header {
-    padding: 1rem 0;
-    text-align: center;
-    border-bottom: 1px solid #21262d;
-    user-select: none;
-    position: relative;
-    z-index: 11;
-  }
-
-  /* Hacker flicker/glitch effect on text - keyframe */
-  @keyframes flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-      opacity: 1;
-      text-shadow:
-        0 0 4px #39ff14,
-        0 0 8px #39ff14,
-        0 0 12px #39ff14,
-        0 0 18px #0f5d00;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Newbie Cyber Security</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
     }
-    20%, 22%, 24%, 55% {
-      opacity: 0.8;
-      text-shadow: none;
+    body {
+      font-family: 'Inter', sans-serif;
     }
-  }
-  @keyframes glitchTop {
-    0% {
-      clip-path: inset(0 0 80% 0);
-      transform: translate(2px, -2px);
-      opacity: 0.8;
-    }
-    20% {
-      clip-path: inset(0 0 80% 0);
-      transform: translate(-2px, 2px);
-      opacity: 1;
-    }
-    40% {
-      clip-path: inset(0 0 80% 0);
-      transform: translate(2px, 2px);
-      opacity: 0.6;
-    }
-    60%, 100% {
-      clip-path: inset(0 0 80% 0);
-      transform: translate(0, 0);
-      opacity: 1;
-    }
-  }
-  @keyframes glitchBottom {
-    0% {
-      clip-path: inset(80% 0 0 0);
-      transform: translate(-2px, 2px);
-      opacity: 0.8;
-    }
-    20% {
-      clip-path: inset(80% 0 0 0);
-      transform: translate(2px, -2px);
-      opacity: 1;
-    }
-    40% {
-      clip-path: inset(80% 0 0 0);
-      transform: translate(-2px, -2px);
-      opacity: 0.6;
-    }
-    60%, 100% {
-      clip-path: inset(80% 0 0 0);
-      transform: translate(0, 0);
-      opacity: 1;
-    }
-  }
-
-  /* Header main text with glitch replicas for effect */
-  header h1 {
-    font-weight: 900;
-    font-size: 2.5rem;
-    color: #39ff14;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    animation: flicker 3s infinite alternate;
-    position: relative;
-  }
-  header h1::before,
-  header h1::after {
-    content: "NEWBIE CYBER SECURITY";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    color: #0f5d00;
-    opacity: 0.7;
-    clip-path: inset(0 0 80% 0);
-  }
-  header h1::before {
-    left: 2px;
-    text-shadow: -2px 0 #2fed13;
-    animation: glitchTop 2.5s infinite linear alternate-reverse;
-  }
-  header h1::after {
-    left: -2px;
-    text-shadow: -1px 0 #04a103;
-    clip-path: inset(80% 0 0 0);
-    animation: glitchBottom 3s infinite linear alternate;
-  }
-
-  /* Enhanced Navigation */
-  nav {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 1.25rem 0 2.25rem 0;
-    user-select: none;
-    position: relative;
-    z-index: 11;
-    padding: 0.5rem 1rem;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid #21262d;
-    border-radius: 10px;
-    box-shadow:
-      0 0 6px #0f5d0055;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    transition: background-color 0.3s ease;
-  }
-  nav:hover,
-  nav:focus-within {
-    background: rgba(0, 0, 0, 0.6);
-    box-shadow:
-      0 0 15px #39ff14cc;
-    outline: none;
-  }
-  nav a {
-    color: #58a6ff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    position: relative;
-    padding: 0.5rem 0.75rem;
-    border-radius: 6px;
-    transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  nav a::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    left: 0;
-    bottom: 4px;
-    background-color: #58a6ff;
-    transition: width 0.3s ease;
-    border-radius: 1px;
-  }
-  nav a:hover,
-  nav a:focus {
-    color: #39ff14;
-    background-color: rgba(57, 255, 20, 0.10);
-    box-shadow:
-      0 0 8px #39ff1477;
-    outline: none;
-  }
-  nav a:hover::after,
-  nav a:focus::after {
-    width: 100%;
-  }
-
-  /* Hero Section */
-  .hero {
-    background: linear-gradient(135deg, #0d1117 40%, #010409 100%);
-    border: 2px solid #39ff14;
-    border-radius: 10px;
-    padding: 2rem 1.5rem;
-    text-align: center;
-    box-shadow:
-      0 0 10px #39ff14aa,
-      inset 0 0 8px #39ff14cc;
-    user-select: none;
-    position: relative;
-    z-index: 11;
-  }
-  .hero h2 {
-    font-size: 1.8rem;
-    color: #39ff14;
-    margin-bottom: 1rem;
-    letter-spacing: 0.05em;
-    text-shadow:
-      0 0 5px #2fed13,
-      0 0 10px #2fed13;
-  }
-  .hero p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    max-width: 600px;
-    margin: 0 auto 2rem auto;
-    color: #8b949e;
-    font-style: italic;
-  }
-  .hero button {
-    background-color: #39ff14;
-    border: none;
-    color: #010409;
-    font-weight: 700;
-    font-size: 1rem;
-    padding: 0.8rem 3rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.25s ease, box-shadow 0.4s ease;
-    user-select: none;
-    box-shadow:
-      0 0 12px #39ff1455;
-    filter: drop-shadow(0 0 2px #39ff14bb);
-  }
-  .hero button:hover,
-  .hero button:focus {
-    background-color: #2fd813;
-    outline: none;
-    box-shadow:
-      0 0 20px #2fd813cc,
-      0 0 30px #2fd813aa;
-    animation: pulseGlow 2.5s infinite alternate;
-  }
-  @keyframes pulseGlow {
-    from {
-      box-shadow:
-        0 0 20px #2fd813cc,
-        0 0 30px #2fd813aa;
-    }
-    to {
-      box-shadow:
-        0 0 30px #39ff14ff,
-        0 0 40px #39ff14dd;
-    }
-  }
-
-  /* Features Section */
-  .features {
-    margin-top: 3rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.75rem;
-    user-select: none;
-  }
-  .feature-card {
-    background: #161b22cc; /* semi-transparent for subtle background */
-    border: 1.5px solid #21262d;
-    padding: 1.7rem 1.5rem;
-    border-radius: 12px;
-    box-shadow:
-      0 0 6px #0f5d0055;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    position: relative;
-  }
-  .feature-card:hover,
-  .feature-card:focus-within {
-    transform: translateY(-6px);
-    box-shadow:
-      0 0 15px #39ff14cc;
-    outline: none;
-  }
-  .feature-card h3 {
-    color: #39ff14;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-    letter-spacing: 0.05em;
-    position: relative;
-  }
-  /* Add code-like style underline with glitch effect on feature headings */
-  .feature-card h3::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 40px;
-    height: 4px;
-    background: linear-gradient(90deg, #39ff14, #0f5d00, #2fed13);
-    filter: drop-shadow(0 0 3px #39ff14);
-    animation: glitchUnderline 4s infinite linear;
-    border-radius: 1px;
-  }
-  @keyframes glitchUnderline {
-    0%, 100% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(5px);
-    }
-  }
-  .feature-card p {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #8b949e;
-    flex-grow: 1;
-  }
-
-  /* Footer */
-  footer {
-    background-color: #010409;
-    padding: 1rem 0;
-    text-align: center;
-    color: #30363d;
-    font-size: 0.9rem;
-    user-select: none;
-    position: relative;
-    z-index: 11;
-  }
-  footer a {
-    color: #58a6ff;
-    text-decoration: none;
-  }
-  footer a:hover,
-  footer a:focus {
-    color: #39ff14;
-    outline: none;
-  }
-
-  /* Scrollbar styling for modern browsers */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #0d1117;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #39ff14cc;
-    border-radius: 3px;
-  }
-
-  /* Responsive font scaling and layout tweaks */
-  @media (max-width: 400px) {
-    header h1 {
-      font-size: 1.8rem;
-    }
-    nav {
-      max-width: 100%;
-      gap: 1rem;
-      padding: 0.4rem 0.5rem;
-    }
-    nav a {
-      font-size: 1rem;
-      padding: 0.5rem 0.6rem;
-    }
-    .hero h2 {
-      font-size: 1.4rem;
-    }
-    .features {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
+  </style>
 </head>
-<body>
-<canvas id="matrix-canvas" aria-hidden="true"></canvas>
 
-<header role="banner" aria-label="Site header">
-  <h1>NEWBIE CYBER SECURITY</h1>
-</header>
-<nav role="navigation" aria-label="Primary navigation">
-  <a href="#home" tabindex="0">Home</a>
-  <a href="#tips" tabindex="0">Cyber Security Tips</a>
-  <a href="#services" tabindex="0">Services</a>
-  <a href="#contact" tabindex="0">Contact</a>
-</nav>
-<main class="container" role="main">
-  <section id="home" class="hero" tabindex="0" aria-label="Welcome section">
-    <h2>Welcome to Your Cyber Security Hub</h2>
-    <p>Stay safe online with our expert guides, tools, and resources tailored for beginners and professionals alike.</p>
-    <button type="button" aria-label="Get Started Button" onclick="alert('Get started with NEWBIE CYBER SECURITY!')">Get Started</button>
+<body class="bg-gray-900 text-white">
+  <!-- Navbar -->
+  <header class="bg-gray-800 sticky top-0 z-50 shadow">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 class="text-xl font-bold">Newbie Cyber Security</h1>
+      <nav class="space-x-4 hidden md:block">
+        <a href="#home" class="hover:text-teal-400">Home</a>
+        <a href="#about" class="hover:text-teal-400">Tentang</a>
+        <a href="#komunitas" class="hover:text-teal-400">Komunitas</a>
+        <a href="#kontak" class="hover:text-teal-400">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex items-center justify-center text-center px-4">
+    <div>
+      <h2 class="text-4xl md:text-6xl font-bold mb-4">Selamat Datang di</h2>
+      <h3 class="text-teal-400 text-3xl md:text-5xl font-semibold mb-6">Newbie Cyber Security</h3>
+      <p class="text-lg max-w-xl mx-auto">Komunitas belajar dan berbagi seputar keamanan siber untuk pemula.</p>
+      <a href="#komunitas" class="mt-6 inline-block bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded-full transition">Gabung Sekarang</a>
+    </div>
   </section>
 
-  <section id="tips" class="features" aria-label="Cyber security tips">
-    <article class="feature-card" tabindex="0">
-      <h3>Use Strong Passwords</h3>
-      <p>Create complex passwords with a mix of letters, numbers, and symbols. Avoid using easily guessable information.</p>
-    </article>
-    <article class="feature-card" tabindex="0">
-      <h3>Enable Two-Factor Authentication</h3>
-      <p>Add an extra layer of security to your accounts by requiring a second form of verification when logging in.</p>
-    </article>
-    <article class="feature-card" tabindex="0">
-      <h3>Keep Software Updated</h3>
-      <p>Always install updates to fix security vulnerabilities and enhance protection against threats.</p>
-    </article>
+  <!-- Tentang -->
+  <section id="about" class="py-16 bg-gray-800 px-4">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-6">Tentang Kami</h2>
+      <p class="text-gray-300">Newbie Cyber Security adalah komunitas yang didedikasikan untuk siapa saja yang ingin memulai perjalanan di dunia keamanan siber. Kami menyediakan sumber belajar, diskusi, dan bimbingan.</p>
+    </div>
   </section>
 
-  <section id="services" class="features" aria-label="Services">
-    <article class="feature-card" tabindex="0">
-      <h3>Security Audits</h3>
-      <p>We help you evaluate your network and systems to identify and fix security weaknesses.</p>
-    </article>
-    <article class="feature-card" tabindex="0">
-      <h3>Training Workshops</h3>
-      <p>Hands-on sessions designed to empower you with essential cyber security knowledge and skills.</p>
-    </article>
-    <article class="feature-card" tabindex="0">
-      <h3>Incident Response</h3>
-      <p>Expert support to quickly respond to and recover from cyber attacks.</p>
-    </article>
+  <!-- Komunitas -->
+  <section id="komunitas" class="py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Apa yang Kami Tawarkan?</h2>
+      <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <div class="bg-gray-800 p-6 rounded-2xl shadow hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-2">Tutorial & Artikel</h3>
+          <p class="text-gray-300">Konten edukatif yang mudah dipahami untuk pemula hingga menengah.</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-2xl shadow hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-2">Forum Diskusi</h3>
+          <p class="text-gray-300">Tempat bertanya dan berdiskusi dengan sesama member.</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-2xl shadow hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-2">Event & Workshop</h3>
+          <p class="text-gray-300">Ikuti kegiatan belajar bersama, webinar, dan kompetisi CTF.</p>
+        </div>
+      </div>
+    </div>
   </section>
-</main>
 
-<footer role="contentinfo" id="contact">
-  <p>© 2024 NEWBIE CYBER SECURITY | <a href="mailto:info@newbiecybersecurity.com" aria-label="Email us">Contact</a></p>
-</footer>
+  <!-- Kontak -->
+  <section id="kontak" class="py-16 bg-gray-800 px-4">
+    <div class="max-w-xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-6">Hubungi Kami</h2>
+      <p class="mb-4 text-gray-300">Punya pertanyaan atau ingin berkolaborasi? Kirim email ke:</p>
+      <a href="mailto:info@newbiecyber.id" class="text-teal-400 font-semibold">info@newbiecyber.id</a>
+    </div>
+  </section>
 
-<script>
-  // Matrix code rain background effect
-  (() => {
-    const canvas = document.getElementById('matrix-canvas');
-    const ctx = canvas.getContext('2d');
-
-    let width, height;
-    let columns;
-    let drops;
-
-    const letters = 'abcdefghijklmnopqrstuvwxyz123456789@#$%^&*()*&^%';
-    const fontSize = 16;
-    const green = '#39ff14';
-
-    function resize() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-      columns = Math.floor(width / fontSize);
-      drops = new Array(columns).fill(1);
-    }
-
-    function draw() {
-      ctx.fillStyle = 'rgba(13,17,23,0.1)';
-      ctx.fillRect(0, 0, width, height);
-
-      ctx.fillStyle = green;
-      ctx.font = fontSize + 'px monospace';
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-    }
-
-    function loop() {
-      draw();
-      requestAnimationFrame(loop);
-    }
-
-    window.addEventListener('resize', () => {
-      resize();
-    });
-
-    resize();
-    loop();
-  })();
-</script>
-
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-center py-6 text-gray-400 text-sm">
+    &copy; 2025 Newbie Cyber Security. All rights reserved.
+  </footer>
 </body>
+
 </html>
-</content>
-</create_file>
