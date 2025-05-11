@@ -141,6 +141,33 @@
       text-align: center;
     }
 
+    .news-list article {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #333;
+    }
+
+    .news-list h3 {
+      margin: 0 0 5px;
+      font-size: 1.2em;
+      color: var(--primary-color);
+    }
+
+    .news-list h3 a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .news-list h3 a:hover {
+      text-decoration: underline;
+    }
+
+    .news-list p {
+      margin: 5px 0;
+      color: var(--muted-color);
+      line-height: 1.5;
+    }
+
     @keyframes fadeIn {
       to {
         opacity: 1;
@@ -163,21 +190,22 @@
     <a href="#about">Tentang</a>
     <a href="#testimonials">Testimoni</a>
     <a href="#gallery">Galeri</a>
+    <a href="#news">Berita</a>
   </nav>
 
   <div class="linktree">
-    <a href="https://www.tiktok.com/@offcncs" title="TikTok 1">TikTok 1</a>
-    <a href="https://www.tiktok.com/@offcncs01" title="TikTok 2">TikTok 2</a>
-    <a href="https://www.tiktok.com/@st0ry053" title="TikTok 3">TikTok 3</a>
-    <a href="https://www.instagram.com/offcncs" title="Instagram">Instagram</a>
-    <a href="https://facebook.com/groups/632077237669216/" title="Facebook Group">Facebook Group</a>
-    <a href="https://github.com/RamaFounderNCS" title="GitHub">GitHub</a>
-    <a href="https://offcncs.blogspot.com/" title="Blogspot">Blogspot</a>
-    <a href="https://zone-xsec.com/archive/team/NEWBIE+CYBER+SECURITY" title="Zone-Xsec">Zone-Xsec Archive</a>
-    <a href="https://haxor.id/archive/team/NEWBIE+CYBER+SECURITY" title="Haxor.id">Haxor.id Archive</a>
-    <a href="mailto:offcncs@gmail.com" title="Email">Email</a>
-    <a href="tel:+6283846681933" title="Telepon / WA">Telepon / WA</a>
-    <a href="https://whatsapp.com/channel/0029VaA604P8PgsAClQgvf2O" title="WhatsApp Channel">WhatsApp Channel</a>
+    <a href="https://www.tiktok.com/@offcncs">TikTok 1</a>
+    <a href="https://www.tiktok.com/@offcncs01">TikTok 2</a>
+    <a href="https://www.tiktok.com/@st0ry053">TikTok 3</a>
+    <a href="https://www.instagram.com/offcncs">Instagram</a>
+    <a href="https://facebook.com/groups/632077237669216/">Facebook Group</a>
+    <a href="https://github.com/RamaFounderNCS">GitHub</a>
+    <a href="https://offcncs.blogspot.com/">Blogspot</a>
+    <a href="https://zone-xsec.com/archive/team/NEWBIE+CYBER+SECURITY">Zone-Xsec Archive</a>
+    <a href="https://haxor.id/archive/team/NEWBIE+CYBER+SECURITY">Haxor.id Archive</a>
+    <a href="mailto:offcncs@gmail.com">Email</a>
+    <a href="tel:+6283846681933">Telepon / WA</a>
+    <a href="https://whatsapp.com/channel/0029VaA604P8PgsAClQgvf2O">WhatsApp Channel</a>
   </div>
 
   <div class="section" id="about">
@@ -200,8 +228,52 @@
     </div>
   </div>
 
+  <div class="section" id="news">
+    <h2>Berita Terbaru</h2>
+    <div class="news-list">
+      <p>Memuat berita...</p>
+    </div>
+  </div>
+
   <footer>
     <p>&copy; 2025 Newbie Cyber Security. All rights reserved.</p>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      fetch('https://offcncs.blogspot.com/feeds/posts/default?alt=json')
+        .then(response => response.json())
+        .then(data => {
+          const container = document.querySelector('.news-list');
+          container.innerHTML = '';
+          const entries = data.feed.entry;
+
+          if (!entries || entries.length === 0) {
+            container.innerHTML = '<p>Tidak ada berita terbaru.</p>';
+            return;
+          }
+
+          entries.slice(0, 5).forEach(entry => {
+            const title = entry.title.$t;
+            const link = entry.link.find(l => l.rel === 'alternate').href;
+            const published = new Date(entry.published.$t).toLocaleDateString('id-ID');
+            const content = entry.content ? entry.content.$t : '';
+            const snippet = content.replace(/<[^>]+>/g, '').substring(0, 150) + '...';
+
+            const article = document.createElement('article');
+            article.innerHTML = `
+              <h3><a href="${link}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
+              <p><small>${published}</small></p>
+              <p>${snippet}</p>
+            `;
+            container.appendChild(article);
+          });
+        })
+        .catch(error => {
+          console.error('Gagal memuat berita:', error);
+          document.querySelector('.news-list').innerHTML = '<p>Gagal memuat berita. Coba lagi nanti.</p>';
+        });
+    });
+  </script>
 </body>
 </html>
