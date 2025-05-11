@@ -1,96 +1,147 @@
 <!DOCTYPE html><html lang="en"><head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Official website of Newbie Cyber Security. Join us and grow together in cyber knowledge!">
   <title>Newbie Cyber Security</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
+    * {
+      scroll-behavior: smooth;
+    }
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: #0d1117;
       color: #c9d1d9;
+      margin: 0;
     }
     header {
       background-color: #161b22;
-      padding: 20px;
+      padding: 60px 20px;
       text-align: center;
     }
     header img {
-      height: 100px;
+      max-height: 120px;
+      margin-bottom: 20px;
     }
     h1, h2 {
       color: #f0f6fc;
+      font-weight: 700;
     }
     section {
-      padding: 40px 20px;
+      padding: 60px 20px;
+    }
+    .btn-custom {
+      background-color: #238636;
+      color: white;
+      border-radius: 8px;
+      padding: 10px 20px;
+      transition: all 0.3s ease;
+    }
+    .btn-custom:hover {
+      background-color: #2ea043;
     }
     .gallery img {
       width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-    footer {
-      background-color: #161b22;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
-    .social-icons a {
-      color: #58a6ff;
-      margin: 0 10px;
-      text-decoration: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
     .testimonials blockquote {
       background: #21262d;
       padding: 20px;
       border-left: 5px solid #58a6ff;
       border-radius: 8px;
+      font-style: italic;
+    }
+    .social-icons a {
+      display: inline-block;
+      margin: 10px;
+      color: #58a6ff;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: #79c0ff;
+    }
+    .contact-form input, .contact-form textarea {
+      background-color: #0d1117;
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+      border-radius: 6px;
+    }
+    footer {
+      background-color: #161b22;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
     }
   </style>
 </head><body>
   <header>
     <img src="/mnt/data/file-8HDM79wgve8V5poji2gCMG" alt="Newbie Cyber Security Logo">
     <h1>Newbie Cyber Security</h1>
-    <p>Official Cyber Community | Since 2019</p>
+    <p class="lead">Official Cyber Community | Since 2019</p>
   </header>  <section id="about">
-    <div class="container">
+    <div class="container text-center">
       <h2>About Us</h2>
-      <p>Newbie Cyber Security (NCS) is a community founded in 2019, dedicated to helping cybersecurity enthusiasts grow, share knowledge, and explore ethical hacking together. We support all levels of skill and promote ethical learning and collaboration.</p>
+      <p class="mt-3">Newbie Cyber Security (NCS) is a community for cybersecurity enthusiasts. Founded in 2019, we focus on education, collaboration, and ethical hacking. Everyone is welcome to learn and grow together in a safe and supportive environment.</p>
     </div>
-  </section>  <section id="gallery" class="bg-dark text-light">
+  </section>  <section id="gallery" class="bg-dark">
     <div class="container">
-      <h2>Gallery</h2>
-      <div class="row gallery">
-        <div class="col-md-4"><img src="https://via.placeholder.com/400x300?text=Image+1" alt="Gallery 1"></div>
-        <div class="col-md-4"><img src="https://via.placeholder.com/400x300?text=Image+2" alt="Gallery 2"></div>
-        <div class="col-md-4"><img src="https://via.placeholder.com/400x300?text=Image+3" alt="Gallery 3"></div>
+      <h2 class="text-center">Gallery</h2>
+      <div class="row mt-4">
+        <div class="col-md-4 mb-4"><img src="https://via.placeholder.com/400x300?text=Activity+1" alt="Gallery 1"></div>
+        <div class="col-md-4 mb-4"><img src="https://via.placeholder.com/400x300?text=Activity+2" alt="Gallery 2"></div>
+        <div class="col-md-4 mb-4"><img src="https://via.placeholder.com/400x300?text=Activity+3" alt="Gallery 3"></div>
       </div>
     </div>
   </section>  <section id="testimonials">
     <div class="container">
-      <h2>Testimonials</h2>
-      <div class="testimonials">
-        <blockquote>"NCS really helped me get into cybersecurity. Great support and resources!" – Member A</blockquote>
-        <blockquote>"Amazing community for beginners and advanced learners alike!" – Member B</blockquote>
+      <h2 class="text-center">Testimonials</h2>
+      <div class="row mt-4">
+        <div class="col-md-6 mb-3">
+          <blockquote>"NCS helped me kickstart my journey in cybersecurity. Great people, great learning!" – Alex</blockquote>
+        </div>
+        <div class="col-md-6 mb-3">
+          <blockquote>"A community that truly supports its members. I love the team spirit!" – Maya</blockquote>
+        </div>
       </div>
     </div>
-  </section>  <section id="social">
+  </section>  <section id="contact" class="bg-dark">
     <div class="container">
+      <h2 class="text-center">Contact Us</h2>
+      <form class="contact-form row g-3 mt-4">
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Your Name" required>
+        </div>
+        <div class="col-md-6">
+          <input type="email" class="form-control" placeholder="Your Email" required>
+        </div>
+        <div class="col-12">
+          <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+        </div>
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-custom">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </section>  <section id="social">
+    <div class="container text-center">
       <h2>Connect with Us</h2>
-      <div class="social-icons">
-        <a href="https://www.tiktok.com/@offcncs">TikTok 1</a>
-        <a href="https://www.tiktok.com/@offcncs01">TikTok 2</a>
-        <a href="https://www.tiktok.com/@st0ry053">TikTok 3</a>
-        <a href="https://www.instagram.com/offcncs">Instagram</a>
-        <a href="https://facebook.com/groups/632077237669216/">Facebook Group</a>
-        <a href="https://github.com/RamaFounderNCS">GitHub</a>
-        <a href="https://offcncs.blogspot.com/">Blogspot</a>
-        <a href="https://zone-xsec.com/archive/team/NEWBIE+CYBER+SECURITY">Zone-XSec</a>
-        <a href="https://haxor.id/archive/team/NEWBIE+CYBER+SECURITY">Haxor.id</a>
-        <a href="mailto:offcncs@gmail.com">Email</a>
-        <a href="https://wa.me/6283846681933">WhatsApp Chat</a>
-        <a href="https://whatsapp.com/channel/0029VaA604P8PgsAClQgvf2O">WhatsApp Channel</a>
+      <div class="social-icons mt-3">
+        <a href="https://www.tiktok.com/@offcncs" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.tiktok.com/@offcncs01" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.tiktok.com/@st0ry053" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/offcncs" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://facebook.com/groups/632077237669216/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://github.com/RamaFounderNCS" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://offcncs.blogspot.com/" target="_blank"><i class="fab fa-blogger"></i></a>
+        <a href="https://zone-xsec.com/archive/team/NEWBIE+CYBER+SECURITY" target="_blank"><i class="fas fa-user-secret"></i></a>
+        <a href="https://haxor.id/archive/team/NEWBIE+CYBER+SECURITY" target="_blank"><i class="fas fa-user-lock"></i></a>
+        <a href="mailto:offcncs@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://wa.me/6283846681933" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://whatsapp.com/channel/0029VaA604P8PgsAClQgvf2O" target="_blank"><i class="fas fa-bullhorn"></i></a>
       </div>
     </div>
   </section>  <footer>
