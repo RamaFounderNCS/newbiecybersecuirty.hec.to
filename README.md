@@ -35,3 +35,9 @@ Kami fokus pada edukasi, kolaborasi, dan eksplorasi dunia cybersecurity untuk se
 ## Live Demo
 
 Website ini dapat diakses secara publik melalui GitHub Pages:
+
+Ganti `<RamaFounderNCS>` dan `<newbiecybersecuirty.hec.to>` sesuai akun dan nama repositorimu.
+
+---
+
+> Website ini dikembangkan oleh komunitas dengan semangat berbagi dan belajar bersama.
